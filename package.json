@@ -1,0 +1,22 @@
+{
+  "name": "ll.js",
+  "version": "1.0.2",
+  "description": "A recursive descent LL(infinite) parser with friendly syntax",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+ "repository": {
+    "type": "git",
+    "url": "https://github.com/pixelspark/ll.js.git"
+  },
+  "keywords": [
+    "ll",
+    "parser",
+    "descent",
+    "recursive",
+    "expression"
+  ],
+  "author": "Tommy van der Vorst",
+  "license": "MIT"
+}
