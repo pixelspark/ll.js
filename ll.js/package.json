@@ -1,0 +1,18 @@
+{
+  "name": "ll.js",
+  "version": "1.0.0",
+  "description": "A recursive descent LL(infinite) parser with friendly syntax",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ll",
+    "parser",
+    "descent",
+    "recursive",
+    "expression"
+  ],
+  "author": "Tommy van der Vorst",
+  "license": "MIT"
+}
