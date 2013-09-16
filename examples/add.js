@@ -1,4 +1,4 @@
-var ll = require("../ll.js");
+var ll = require("../index");
 var p = ll.Factory;
 
 /** Create a simple grammar for parsing addition. Equivalent EBNF is:
