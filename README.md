@@ -1,6 +1,6 @@
 # ll.js
 
-Ll.js provides a simple way of parsing about anything using a recursive-descent, LL(infinite)
+Ll.js provides a simple way of parsing about anything using a recursive-descent
 algorithm. The grammar to be parsed is written in a friendly DSL (domain specific language) in
 JavaScript itself that resembles EBNF. Each parser term can be annotated with a function; when
 the final parse tree includes the term, the function is added to a list. This allows for the 
