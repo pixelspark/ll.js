@@ -23,6 +23,7 @@ The following code parses this grammar with ll.js, and executes the additions:
 
 ````javascript
 var ll = require("ll.js");
+var p  = ll.Factory;
 
 function adder(stack, cb) {
         var a = stack.pop();
