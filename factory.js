@@ -175,7 +175,7 @@ StringTerm.extend({
 	},
 	
 	example: function(grammar, callback) {
-		return callback(null, "xyz");
+		return callback(null, '"..."');
 	}
 });
 
