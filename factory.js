@@ -332,7 +332,7 @@ SequenceTerm.extend({
 	example: function(grammar, callback) {
         var s = '', space = '';
         for (var i = 0; i < this.terms.length; ++i) {
-            this.terms[i].example(grammar, (e,t) => {
+            this.terms[i].example(grammar, function(e,t) {
                 if (e)
                     return callback(e);
                 s += space + t;
