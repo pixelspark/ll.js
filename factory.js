@@ -328,30 +328,8 @@ SequenceTerm.extend({
 			return callback(null, {sequence:dump});
 		});
 	},
-	
-	_exampleIndex: function(index, grammar, example, callback) {
-		var self = this;
-		
-		this.terms[index].example(grammar, function(err, example) {
-			if(err) {
-				return callback(err);
-			}
-			
-			index++;
-			if(index<=self.terms.length) {
-				self._exampleIndex(index, grammar, function(err, others) {
-					if(err) return callback(err);
-					return callback(null, example + " " + others);
-				});	
-			}
-			else {
-				return callback(null, example);
-			}
-		});
-	},
-	
+
 	example: function(grammar, callback) {
-        console.log('seq', this.terms);
         var s = '', space = '';
         for (var i = 0; i < this.terms.length; ++i) {
             this.terms[i].example(grammar, (e,t) => {
