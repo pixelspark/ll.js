@@ -329,7 +329,7 @@ SequenceTerm.extend({
 		});
 	},
 	
-	_exampleIndex: function(index, grammar, callback) {	
+	_exampleIndex: function(index, grammar, example, callback) {
 		var self = this;
 		
 		this.terms[index].example(grammar, function(err, example) {
@@ -351,7 +351,17 @@ SequenceTerm.extend({
 	},
 	
 	example: function(grammar, callback) {
-		this._exampleIndex(0, grammar, example, callback);
+        console.log('seq', this.terms);
+        var s = '', space = '';
+        for (var i = 0; i < this.terms.length; ++i) {
+            this.terms[i].example(grammar, (e,t) => {
+                if (e)
+                    return callback(e);
+                s += space + t;
+                space = ' ';
+            })
+        }
+		callback(null, s);
 	}
 });
 

@@ -23,4 +23,17 @@ describe('Example', () => {
         });
     });
 
+    it('should produce all examples for term.sequence', done => {
+        var g = new ll.Grammar();
+        g.addRule('value', p.sequence(
+			p.string(),
+			p.keyword('is-a'),
+			p.keyword('string')
+		), true);
+        g.example((e,s) => {
+            s.should.equal('"..." is-a string');
+            done();
+        });
+    });
+
 });
