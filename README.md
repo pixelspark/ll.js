@@ -103,7 +103,7 @@ factory'. For efficient usage, it is best to create a variable alias for the fac
   p.optionally(t): tries to parse t; whether it matches or not, this term always matches
 * p.either(a, b, c): matches when either a, b or c successfully matches. The parser tries terms in the order specified.
 * p.kleene(k): matches any number of k 
-
+* p.regex(regex, example): matches if the regular expression matches.
 
 ## Contact
 - Tommy van der Vorst
