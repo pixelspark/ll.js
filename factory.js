@@ -207,7 +207,7 @@ StringTerm.extend({
 	},
 	
 	example: function(grammar, callback) {
-		return callback(null, "xyz");
+		return callback(null, '"..."');
 	}
 });
 
@@ -360,30 +360,18 @@ SequenceTerm.extend({
 			return callback(null, {sequence:dump});
 		});
 	},
-	
-	_exampleIndex: function(index, grammar, callback) {	
-		var self = this;
-		
-		this.terms[index].example(grammar, function(err, example) {
-			if(err) {
-				return callback(err);
-			}
-			
-			index++;
-			if(index<=self.terms.length) {
-				self._exampleIndex(index, grammar, function(err, others) {
-					if(err) return callback(err);
-					return callback(null, example + " " + others);
-				});	
-			}
-			else {
-				return callback(null, example);
-			}
-		});
-	},
-	
+
 	example: function(grammar, callback) {
-		this._exampleIndex(0, grammar, example, callback);
+        var s = '', space = '';
+        for (var i = 0; i < this.terms.length; ++i) {
+            this.terms[i].example(grammar, function(e,t) {
+                if (e)
+                    return callback(e);
+                s += space + t;
+                space = ' ';
+            })
+        }
+		callback(null, s);
 	}
 });
 
