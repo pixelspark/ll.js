@@ -142,6 +142,38 @@ NumberTerm.extend({
 	}
 });
 
+/** Matches a regular expression **/
+var RegexTerm = Class.create(Term, function(regex, exampleString) {
+    this.regex = regex;
+    this.exampleString = exampleString;
+});
+
+RegexTerm.extend({
+	parse: function(reader, script, grammar, callback) {
+		var match = reader.nextMatching(this.regex, this);
+		if(match) {
+			script.push(function pushRegex(stack, cb) {
+				stack.push(match[0]);
+				return cb();
+			});
+			reader.consume(match[0]);
+			return callback(true);
+		}
+		return callback(false);
+	},
+
+	dump: function(grammar, callback) {
+		return callback(null, {
+            regex: this.regex,
+            example: this.exampleString
+        });
+	},
+
+	example: function(grammar, callback) {
+		return callback(null, this.exampleString);
+	}
+});
+
 /** Matches arbitrary, escaped strings between double quotes **/
 var StringTerm = Class.create(Term, function() {
 });
@@ -439,6 +471,9 @@ function Factory(dumped) {
 	else if("number" in dumped) {
 		return new NumberTerm();
 	}
+    else if("regex" in dumped) {
+        return new RegexTerm(dumped.regex, dumped.example);
+    }
 	else if("sequence" in dumped) {
 		var terms = [];
 		for(var i=0; i<dumped.sequence.length; i++) {
@@ -481,6 +516,10 @@ Factory.sequence = function() {
 
 Factory.number = function() {
 	return new NumberTerm();
+};
+
+Factory.regex = function(regex, example) {
+	return new RegexTerm(regex, example);
 };
 
 Factory.string = function() {
