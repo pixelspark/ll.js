@@ -1,6 +1,6 @@
 {
   "name": "ll.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A recursive descent LL(infinite) parser with friendly syntax",
   "main": "index.js",
   "scripts": {
